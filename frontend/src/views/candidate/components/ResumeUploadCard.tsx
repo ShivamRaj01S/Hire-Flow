@@ -69,17 +69,22 @@ export function ResumeUploadCard() {
     formData.append("resume", file);
     formData.append("jobProfileId", String(jobProfileId));
 
-    await apiRequest("/candidate/resume/analyze", {
-      method: "POST",
-      token,
-      body: formData,
-      isMultipart: true
-    });
-    await fakeProgress(300);
-    setState("Success");
-    toast.success("Resume processed.", {
-      description: "Matched skills + score will appear in Recruiter view."
-    });
+      try {
+      await apiRequest("/candidate/resume/analyze", {
+        method: "POST",
+        token,
+        body: formData,
+        isMultipart: true
+      });
+      await fakeProgress(300);
+      setState("Success");
+      toast.success("Resume processed.", {
+        description: "Matched skills + score will appear in Recruiter view."
+      });
+    } catch (err: any) {
+      toast.error("Upload failed", { description: err.message || "An error occurred during upload." });
+      setState("Idle");
+    }
   }, [token, jobProfileId]);
 
   const { getRootProps, getInputProps, isDragActive, fileRejections } =
