@@ -22,7 +22,8 @@ Full-stack project with:
 ### Candidate Workflow
 **Candidate UI - Resume uploading and processing**
 ![Resume Upload](./screenshots/screenshot4.png)
-
+**Duplicate application detection**
+![Candidate trying to applying for same role multiple time](./screenshots/screenshot13.png)
 ### Recruiter Workflow
 **Recruiter UI - Recruitment page**
 ![Recruitment Page](./screenshots/screenshot5.png)
@@ -34,7 +35,8 @@ Full-stack project with:
 ![Scheduling Page](./screenshots/screenshot7.png)
 
 **Email verification shortlisted**
-![Email Verification](./screenshots/screenshot8.png)
+![Email Meet link](./screenshots/screenshot15.png)
+![Email Send](./screenshots/screenshot14.png)
 
 ### Administration Workflow
 **Administration UI - Register page asking for admin code**
@@ -45,12 +47,10 @@ Full-stack project with:
 
 **Administration UI - Logs/Filter (before delete action)**
 ![Audit Logs Before](./screenshots/screenshot11.png)
+![Audit Logs Before](./screenshots/screenshot111.png)
 
-**Administration UI - Delete User**
+**Administration UI - Delete User +log after delete**
 ![Delete User](./screenshots/screenshot12.png)
-
-**Administration UI - Logs (after delete action)**
-![Audit Logs After](./screenshots/screenshot13.png)
 
 ---
 
