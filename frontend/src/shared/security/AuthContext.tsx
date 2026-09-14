@@ -11,7 +11,7 @@ type AuthState = {
 
 type AuthContextValue = AuthState & {
   login: (args: { email: string; password: string }) => Promise<void>;
-  register: (args: { email: string; password: string; role: UserRole }) => Promise<void>;
+  register: (args: { email: string; password: string; role: UserRole; adminCode?: string }) => Promise<void>;
   googleLogin: (args: { idToken: string; role?: UserRole }) => Promise<void>;
   refreshMe: () => Promise<void>;
   logout: () => void;
@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const register = useCallback(
-    async (args: { email: string; password: string; role: UserRole }) => {
+   async (args: { email: string; password: string; role: UserRole; adminCode?: string }) => {
       await apiRequest<{ id: number; email: string; role: UserRole }>("/auth/register", {
         method: "POST",
         body: args
