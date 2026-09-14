@@ -23,6 +23,7 @@ export function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [role, setRole] = useState<UserRole>("Candidate");
+  const [adminCode, setAdminCode] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const emailOk = useMemo(() => /^\S+@\S+\.\S+$/.test(email), [email]);
@@ -36,7 +37,7 @@ export function RegisterPage() {
 
     setIsSubmitting(true);
     try {
-      await register({ email, password, role });
+     await register({ email, password, role, adminCode: role === "Administrator" ? adminCode : undefined });
       toast.success("Account created.");
       navigate(roleLanding(role));
     } catch (err) {
@@ -101,7 +102,18 @@ export function RegisterPage() {
             ))}
           </select>
         </div>
-
+{role === "Administrator" && (
+          <div className="space-y-1.5">
+            <Label htmlFor="adminCode">Admin Registration Code</Label>
+            <Input
+              id="adminCode"
+              type="password"
+              value={adminCode}
+              onChange={(e) => setAdminCode(e.target.value)}
+              placeholder="Secret code from company"
+            />
+          </div>
+        )}
         <Button className="w-full" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Creating..." : "Create account"}
         </Button>
