@@ -7,42 +7,68 @@ Full-stack project with:
 
 ---
 
-## Requirement Coverage Status
+## Screenshots
 
-### 1) Tech stack and deployment targets
-- Frontend React/Vite + Tailwind: **Done**
-- Backend Node.js + Express: **Done**
-- MySQL via Sequelize + MongoDB via Mongoose: **Done**
-- JWT email/password + strict RBAC: **Done**
-- Frontend deploy config (Vercel/Netlify): **Done**
-- Backend deploy config (Render): **Done**
+### Auth & Security
+**Register Page**
+![Register Page](./screenshots/screenshot1.png)
 
-### 2) Database schema
-- MySQL tables/models (`Users`, `JobProfiles`, `Interviews`, `AuditLogs`): **Done**
-- Mongo model (`ResumeData`): **Done**
+**Login Screen**
+![Login Screen](./screenshots/screenshot2.png)
 
-### 3) Phase 1 UI interactions
-- Login/Register + role selection: **Done**
-- Candidate resume upload state flow: **Done (UI flow)**
-- Candidate preferred interview slots UI: **Done**
-- Recruiter weighted skills job form: **Done**
-- Candidate ranking table with matched/missing skills: **Done**
-- Admin audit log grid: **Done**
-- Recruiter scheduling UI with preferences: **Done**
-- Toast notifications: **Done**
+**Login Screen - RBAC Denied**
+![RBAC Denied](./screenshots/screenshot3.png)
 
-### 4) Phase 2 backend + NLP placeholder
-- `server.js`: **Done**
-- Secure DB connection files: **Done**
-- Rule-based NLP placeholder functions: **Done**
-  - Text extraction stub
-  - Preprocessing (tokenize + stop-word removal)
-  - Bias minimization scrubbing
-  - Weighted scoring
+### Candidate Workflow
+**Candidate UI - Resume uploading and processing**
+![Resume Upload](./screenshots/screenshot4.png)
 
-### 5) Extra items you asked now
-- Nodemailer email notifications: **Done**
-- Google OAuth login: **Done**
+### Recruiter Workflow
+**Recruiter UI - Recruitment page**
+![Recruitment Page](./screenshots/screenshot5.png)
+
+**Top shortlisted candidate**
+![Top Shortlisted Candidate](./screenshots/screenshot6.png)
+
+**Recruiter UI - Scheduling page**
+![Scheduling Page](./screenshots/screenshot7.png)
+
+**Email verification shortlisted**
+![Email Verification](./screenshots/screenshot8.png)
+
+### Administration Workflow
+**Administration UI - Register page asking for admin code**
+![Admin Registration](./screenshots/screenshot9.png)
+
+**Administration UI - Admin Dashboard**
+![Admin Dashboard](./screenshots/screenshot10.png)
+
+**Administration UI - Logs/Filter (before delete action)**
+![Audit Logs Before](./screenshots/screenshot11.png)
+
+**Administration UI - Delete User**
+![Delete User](./screenshots/screenshot12.png)
+
+**Administration UI - Logs (after delete action)**
+![Audit Logs After](./screenshots/screenshot13.png)
+
+---
+
+## Features
+
+### Tech Stack & Architecture
+- **Frontend**: React (Vite) with Tailwind CSS for a responsive, modern UI.
+- **Backend**: Node.js & Express API.
+- **Databases**: MySQL (Sequelize) for relational data and MongoDB (Mongoose) for unstructured resume storage.
+- **Authentication**: JWT-based email/password login, Google OAuth integration, and strict Role-Based Access Control (RBAC).
+
+### Core Functionality
+- **Multi-Role Dashboards**: Dedicated workspaces for Candidates, Recruiters, and Administrators.
+- **Resume Processing Pipeline**: NLP-powered text extraction, tokenization, bias minimization, and weighted candidate scoring.
+- **Automated Interview Scheduling**: Candidate slot preferences and recruiter finalization.
+- **Admin Audit Logging**: Comprehensive action tracking and grid views for administrators.
+- **Email Notifications**: Integrated Nodemailer for sending automated updates.
+- **Secure Registration**: Admin accounts protected by secure environment-based registration codes.
 
 ---
 
@@ -86,7 +112,6 @@ Hire_Flow/
     README_PHASE2.md
 
   render.yaml
-  README.md
 ```
 
 ---
@@ -191,6 +216,7 @@ Minimum required:
 - `JWT_EXPIRES_IN`
 - `GOOGLE_CLIENT_ID`
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`
+- `ADMIN_REGISTRATION_CODE`
 
 ---
 
@@ -223,4 +249,3 @@ Minimum required:
 - API request validation layer (Zod/Joi/express-validator)
 - Swagger/OpenAPI docs
 - Reminder scheduler (cron/queue) for interview reminder emails
-
