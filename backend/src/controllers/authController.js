@@ -10,11 +10,16 @@ const allowedRoles = new Set([ROLES.CANDIDATE, ROLES.RECRUITER, ROLES.ADMINISTRA
 const allowedGoogleSignupRoles = new Set([ROLES.CANDIDATE, ROLES.RECRUITER]);
 
 async function register(req, res) {
-  const { email, password, role } = req.body;
+  const { email, password, role,adminCode } = req.body;
   const User = sqlModels.User;
   if (!email || !password || !role) throw new ApiError(400, "email, password and role are required.");
   if (!allowedRoles.has(role)) throw new ApiError(400, "Invalid role.");
   if (String(password).length < 8) throw new ApiError(400, "Password must be at least 8 characters.");
+  if (role === ROLES.ADMINISTRATOR) {
+    if (!adminCode || adminCode !== process.env.ADMIN_REGISTRATION_CODE) {
+      throw new ApiError(403, "Invalid or missing admin registration code.");
+    }
+  }
 
   const exists = await User.findOne({ where: { email: String(email).toLowerCase().trim() } });
   if (exists) throw new ApiError(409, "User already exists.");
