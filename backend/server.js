@@ -81,7 +81,7 @@ async function bootstrap() {
 
   await Promise.all(tasks);
 
-  const port = Number(process.env.PORT || 3001);
+  const port = Number(process.env.PORT || 4000);
   app.listen(port, () => {
     // Avoid logging secrets.
     console.log(`Hire Flow backend listening on port ${port}`);
